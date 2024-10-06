@@ -8,7 +8,10 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 	char *d = (char *)dest;
 	const char *s = (const char *)src;
 	
-	if((s < d && s + n > d) || (d < s && d + n > s))
+	if(d == s || n == 0)
+		return dest;
+
+	/*if(s < d && s + n > d)
     	{
         	char p[n];
         	int x = 0;
@@ -22,7 +25,17 @@ void *ft_memmove(void *dest, const void *src, size_t n)
             	d[i] = p[i];
             	i++;
         	}
-    	}
+    	}*/ //correct but not safe
+
+	if(s < d && s + n > d)
+	{
+		i = n;
+		while(i > 0)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
+	}
 	else
 	{
 		while(i < n)
@@ -36,19 +49,23 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 
 int	main()
 {
-	const char s[] = "hello hi";
-	char d[9];
-	ft_memmove(d, s, sizeof(char) * 9);
-	printf("d = %s\ns = %s\n", d, s);
+	const char ss[] = "hello hi";
+	char de[9];
+	ft_memmove(de, ss, sizeof(char) * 9);
+	printf("de = %s\nss = %s\n", de, ss);
 
 	printf("\n overlap \n");
 	
 	
-	const char t[] = "ComplexOverlappingTest";
+	/*const char t[] = "ComplexOverlappingTest";
 	char *k = (char *)t + 8;
 	
 	printf("dest = %s\nsrc = %s\n", k, t);
 	ft_memmove(k, t + 4, sizeof(char) * 16);
 	printf("dst = %s\nsrc = %s\n", k, t);
-
+*/
+	const char d[] = "hello hi";
+    	char *s = d + 2;
+    	ft_memmove(d, s, sizeof(char) * 4);
+    	printf("d = %s\ns = %s\n", d, s);
 }
