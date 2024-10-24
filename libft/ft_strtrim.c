@@ -16,15 +16,15 @@ char *ft_strtrim(char const *s1, char const *set)
 				break;
 			j++;
 		}
-		if(set[j] == '\0)
+		if(set[j] == '\0')
+			len++;
 		i++;
-
 	}
 }
 
 int	main()
 {
-	char const s1 = "!!!Warning!!!";
-	char const set = "!";
+	char const *s1 = "!!!Warning!!!";
+	char const *set = "!";
 	printf("%s\n", ft_strtrim(s1, set));
 }
