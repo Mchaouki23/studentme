@@ -1,35 +1,26 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/27 11:19:52 by codespace         #+#    #+#             */
+/*   Updated: 2024/10/27 11:19:53 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*char *ft_strchr(const char *s, int c)
-{
-	int i = 0;
-	while(s[i] != '\0')
-	{
-		if(s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
-	}
-	return NULL;
-}*/
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
- {
- 	while(*s != '\0')
+{
+	while(*s != '\0')
 	{
 		if(*s == (char) c)
-			return (char *)s;
+			return ((char *)s);
 		s++;
 	}
 	if(c == '\0')
-		return (char *)s;
-	return NULL;	
- }
-
-int	main()
-{
-	const char t[] = "hello hi bye";
-	printf("%s \n", strchr(t, '\0'));
-	printf("%s", ft_strchr(t, '\0'));
-
+		return ((char *)s);
+	return (NULL);	
 }

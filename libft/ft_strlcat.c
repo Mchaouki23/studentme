@@ -1,23 +1,43 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/27 11:19:43 by codespace         #+#    #+#             */
+/*   Updated: 2024/10/27 11:19:44 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	len = 0;
+	size_t	len;
+       
+	len = 0;
 	while(s[len] != '\0')
 		len++;
-	return len;
+	return (len);
 }
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t dlen = ft_strlen(dest);
-	size_t slen = ft_strlen(src);
+	if(!dest || !src)
+		return (0);
+	size_t dlen;
+	size_t slen;
+	size_t i;
+	size_t t;
 
-	if(size <= dlen)
+	dlen = ft_strlen(dest);
+	slen = ft_strlen(src);
+	if (size == 0 || dlen >= size)
 		return (size + slen);
-	size_t i = dlen;
-	size_t t = 0;
-	while(i < (size - 1) && src[t] != '\0')
+	i = dlen;
+	t = 0;
+	while (i < (size - 1) && t < slen)
 	{
 		dest[i] = src[t];
 		i++;
@@ -26,12 +46,4 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[i] = '\0';
 
 	return (dlen + slen);
-}
-
-int	main()
-{
-	char s[] = "hello";
-	char d[] = "malika ";
-	printf("size %zu   ", sizeof(d));
-	printf("l %zu  ", ft_strlcat(d, s, sizeof(d)));
 }
