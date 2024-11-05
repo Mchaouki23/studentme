@@ -2,22 +2,23 @@
 #include <string.h>
 
        
-void *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char *str = (const unsigned char *)s;
+	const unsigned char *str;
+	size_t i;
 
-	size_t i = 0;
- 	while(i < n)
+	str = (const unsigned char *)s;
+	i = 0;
+ 	while (i < n)
 	{
-		if(str[i] == (unsigned char) c)
-			return (void *)(str + i);
+		if (str[i] == (unsigned char) c)
+			return ((void *)(str + i));
 		i++;
 	}
-
-	return NULL;
+	return (NULL);
 }
 int	main()
 {
 	char arr[] = "hello hi bye";
-    	printf("%s\n", ft_memchr(arr, 'l', sizeof(arr)));
+    	printf("%s\n", memchr(arr, 'b', sizeof(arr)));
 }
